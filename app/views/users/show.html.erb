@@ -1,0 +1,21 @@
+<h1>Profile: <%= @user.name %></h1>
+<% if not current_user == @user %>
+  <% if @friendship %>
+    <%= button_to 'Remove as a friend', user_friendship_path(@user, @friendship), :method => :delete %>
+  <% else %>
+    <%= button_to 'Add as a friend', user_friendships_path(@user), :method => :post %>
+  <% end %>
+<% else %>
+  This is your profile.
+<% end %>
+<h2>User's friends</h2>
+<% if !@user.friends.blank? %>
+  <ul>
+  <% for friend in @user.friends %>
+    <li><%= link_to friend.name,user_path(friend) %></li>
+  <% end %>
+  </ul>
+<% else %>
+  No friends!
+<% end %>
+

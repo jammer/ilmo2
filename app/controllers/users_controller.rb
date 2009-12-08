@@ -6,6 +6,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    if @user
+      @friendship = Friendship.find_by_user_id_and_friend_id(current_user.id, @user.id)
+      render :action => "show"
+    else
+      flash[:error] = 'No such user'
+      redirect_to root_url
+    end
+  end
+
   def new
     @user = User.new
   end

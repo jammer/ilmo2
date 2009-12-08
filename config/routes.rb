@@ -2,7 +2,9 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resource :session
-  map.resources :users 
+  map.resources :users do |user|
+    user.resources :friendships
+  end
   
   map.resources :courses do |course|
     course.resources :course_instances do |course_instance|

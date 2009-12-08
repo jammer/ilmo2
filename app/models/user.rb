@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
 
   has_many :rights
   has_many :roles, :through => :rights
+  
+  has_many :friendships
+  has_many :friends, :class_name => 'User', :through => :friendships
 
   attr_accessor :password, :password_confirmation
 
