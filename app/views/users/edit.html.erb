@@ -45,3 +45,14 @@ paperclip can make use of it when configured so -->
 <% end %>
 
 <%= link_to 'Destroy account', user_path, :method => :delete, :confirm => "Are you sure?" %>
+
+<% if !@user.exercise_groups.blank? %>
+  <h2>Courses you have registered to</h2>
+  <ul>
+  <% for group in @user.exercise_groups %>
+    <li><%= group.course_instance.course.name %> <%= group.course_instance.name %> - <%= group.name %></li>
+  <% end %>
+  </ul>
+<% else %>
+  
+<% end %>
