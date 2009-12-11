@@ -2,7 +2,7 @@ class CourseInstance < ActiveRecord::Base
 
   belongs_to :course
   has_many :exercise_groups, :dependent => :destroy
-  
+  has_many :feedbacks  
   
   def registered_users
     exercise_groups.map{|g| g.users}.flatten.uniq
