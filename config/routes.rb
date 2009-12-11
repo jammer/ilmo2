@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :rights, :active_scaffold => true
     admin.resources :registrations, :active_scaffold => true
     admin.resources :separate_exams, :active_scaffold => true
+    admin.resources :news, :active_scaffold => true
     admin.resource :mailer, :controller => "mailer"
   end
   

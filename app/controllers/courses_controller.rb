@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
   def index
+    @news = News.all
     @course_categories = CourseCategory.all
     
     respond_to do |format|
