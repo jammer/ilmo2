@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
 
-
   map.resource :session
   map.resources :users do |user|
     user.resources :friendships
@@ -30,7 +29,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :admin, :controller => :admin
   
-  map.resource :newsfeed, :controller => "newsfeed"
+  map.resource :newsfeed, :controller => "newsfeed" 
+  
+  map.resources :item do |newsfeed|
+    newsfeed.resources :likes
+  end
   
   map.login "/login", :controller=>:users, :action=>:index
   map.logout "/logout", :controller=>:sessions, :action=>:destroy

@@ -1,7 +1,18 @@
 <div id="newsfeed">
 <ul>
 <% Newsfeed.recent.each do |item|  %>
-  <li><%= "#{item.message} <br /> #{time_ago_in_words(item.created_at)} ago" %></li>
+  <li><%= "#{item.message} <br /> #{time_ago_in_words(item.created_at)} ago" %>
+    <br />
+    <%= link_to "Like this!",item_likes_url(item), :method => :post %>
+    Liked by: 
+    <% if item.likes.empty? %>
+      Nobody
+    <% else %>
+      <% item.users.each do |user| %>
+        <%= user.username %> 
+      <% end %>
+    <% end %>
+  </li>
 <% end%>
 </ul>
 </div>

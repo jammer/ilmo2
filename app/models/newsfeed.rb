@@ -1,5 +1,8 @@
 class Newsfeed < ActiveRecord::Base
 
+  has_many :likes, :dependent => :destroy
+  has_many :users, :through => :likes
+
   default_scope :order => 'updated_at desc'
 
   named_scope :recent, lambda { |*parameters|

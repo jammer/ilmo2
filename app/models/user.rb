@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   require 'digest/sha1'
-
+  
   validates_length_of :username, :in => 3..15
   validates_length_of :name, :in => 3..50, :allow_blank => true
   
@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   
   has_many :friendships
   has_many :friends, :class_name => 'User', :through => :friendships
+  
+  has_many :likes
 
   attr_accessor :password, :password_confirmation
 
