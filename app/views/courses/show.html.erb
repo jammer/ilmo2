@@ -6,14 +6,22 @@
 <h2>Course instances:</h2>
 
 <% if @course.course_instances.any? %>
-
-<ul>
-<% @course.course_instances.each do |course_instance| %>
-    <li><%= link_to course_instance.name, course_course_instance_path(@course, course_instance) %></li>
-<% end %>
-</ul>
+  <ul>
+  <% @course.course_instances.each do |course_instance| %>
+      <li><%= link_to course_instance.name, course_course_instance_path(@course, course_instance) %></li>
+  <% end %>
+  </ul>
 <% else %>
 	<p>No course instances.</p>
+<% end %>
+
+<% if @course.separate_exams.any? %>
+  <h2>Separate exams</h2>
+  <ul>
+  <% @course.separate_exams.each do |separate_exam| %>
+      <li><%= link_to separate_exam.name, course_separate_exam_path(@course, separate_exam) %></li>
+  <% end %>
+  </ul>
 <% end %>
 
 

@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :courses do |course|
+    course.resources :separate_exams
     course.resources :course_instances do |course_instance|
       course_instance.resources :exercise_groups do |exercise_group|
         exercise_group.registration "/registration", :controller => :exercise_groups, :action => :registration
@@ -22,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :roles, :active_scaffold => true
     admin.resources :rights, :active_scaffold => true
     admin.resources :registrations, :active_scaffold => true
+    admin.resources :separate_exams, :active_scaffold => true
     admin.resource :mailer, :controller => "mailer"
   end
   
