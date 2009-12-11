@@ -3,7 +3,10 @@
 
 
 <ul>
-<% @courses.each do |course| %>
+<% @course_categories.each do |course_category| %>  
+  <h3><%= course_category.name %></h3>
+  <% course_category.courses.each do |course| %>
     <li><%= link_to course.name, course %></li>
+  <% end %>
 <% end %>
 </ul>

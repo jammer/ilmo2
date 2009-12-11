@@ -1,11 +1,11 @@
 class CoursesController < ApplicationController
 
   def index
-    @courses = Course.all
+    @course_categories = CourseCategory.all
     
     respond_to do |format|
       format.html
-      format.pdf { send_data PdfExport.all_courses(@courses) }
+      format.pdf { send_data PdfExport.all_courses(@course_categories) }
     end
   end
 
