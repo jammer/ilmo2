@@ -5,4 +5,15 @@ class ExerciseGroup < ActiveRecord::Base
   has_many :registrations
   has_many :users, :through => :registrations
 
+  def full?
+    students >= max_students
+  end
+  
+  def status
+    "(#{students}/#{max_students})"
+  end
+  
+  def students
+    users.count
+  end
 end

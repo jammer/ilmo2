@@ -7,6 +7,8 @@ course = course_instance.course
 
 <h3> <%=h @exercise_group.name %> </h3>
 
+Status: <%= @exercise_group.status %>
+
 <h4>Registered users:</h4>
 <ul>
 <% @exercise_group.users.each do |registered_user| %>

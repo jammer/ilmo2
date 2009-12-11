@@ -30,14 +30,14 @@ for i in 1..how_many_courses
   ci = CourseInstance.create(:name => "Spring 2010")
   ci2 = CourseInstance.create(:name => "Summer 2010")
   ci3 = CourseInstance.create(:name => "Fall 2010")
-  eg = ExerciseGroup.create(:name => "Group 1")
-  eg2 = ExerciseGroup.create(:name => "Group 2")
+  eg = ExerciseGroup.create(:name => "Group 1", :max_students => 10)
+  eg2 = ExerciseGroup.create(:name => "Group 2", :max_students => 2)
   ci.exercise_groups = [eg, eg2]
-  eg_ci2 = ExerciseGroup.create(:name => "Group 1")
-  eg2_ci2 = ExerciseGroup.create(:name => "Group 2")
+  eg_ci2 = ExerciseGroup.create(:name => "Group 1", :max_students => 10)
+  eg2_ci2 = ExerciseGroup.create(:name => "Group 2", :max_students => 2)
   ci2.exercise_groups = [eg_ci2, eg2_ci2]
-  eg_ci3 = ExerciseGroup.create(:name => "Group 1")
-  eg2_ci3 = ExerciseGroup.create(:name => "Group 2")
+  eg_ci3 = ExerciseGroup.create(:name => "Group 1", :max_students => 10)
+  eg2_ci3 = ExerciseGroup.create(:name => "Group 2", :max_students => 2)
   ci3.exercise_groups = [eg_ci3, eg2_ci3]
   c.course_instances = [ci, ci2, ci3]
   # FIXME: This could be replaced with helper cycle()

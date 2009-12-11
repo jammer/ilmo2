@@ -11,7 +11,13 @@ class ExerciseGroupsController < ApplicationController
   def registration
     exercise_group = ExerciseGroup.find(params[:exercise_group_id])
     course_instance = CourseInstance.find(params[:course_instance_id])
-
+    
+    if exercise_group.full?
+      flash[:error] = "The exercise group is full! #{exercise_group.status}"
+      redirect_to course_course_instance_exercise_group_path(course_instance.course, course_instance, exercise_group)
+      return
+    end
+    
     registration = current_user.registrations.build :exercise_group => exercise_group
 
     if registration.save

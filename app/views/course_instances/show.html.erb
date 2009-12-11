@@ -5,7 +5,7 @@
 <% if @course_instance.exercise_groups.any? %>
 <ul>
 <% @course_instance.exercise_groups.each do |exercise_group| %>
-   <li><%= link_to exercise_group.name, course_course_instance_exercise_group_path(@course_instance.course, @course_instance, exercise_group) %></li>
+   <li><%= link_to exercise_group.name, course_course_instance_exercise_group_path(@course_instance.course, @course_instance, exercise_group) %> <%= exercise_group.status %></li>
 <% end %>
 </ul>
 <% else %>
