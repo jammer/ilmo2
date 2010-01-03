@@ -40,6 +40,8 @@ for i in 1..how_many_courses
   eg2_ci3 = ExerciseGroup.create(:name => "Group 2", :max_students => 2)
   ci3.exercise_groups = [eg_ci3, eg2_ci3]
   c.course_instances = [ci, ci2, ci3]
+  se = SeparateExam.create(:name => "Separate exam 2010")
+  c.separate_exams << se
   # FIXME: This could be replaced with helper cycle()
   category = categories.shift
   categories << category
