@@ -8,6 +8,15 @@
 <% else %>
   This is your profile.
 <% end %>
+<h2>Course statistics</h2>
+<% if @user.completed_courses.count == @user.failed_courses.count %>
+<div><img src="http://chart.apis.google.com/chart?cht=p&chco=FF0000,00FF00&chs=400x150&chl=Failed Courses|Completed Courses&chd=t:1,1"></div>
+<% else %>
+<div><img
+src="http://chart.apis.google.com/chart?cht=p&chco=FF0000,00FF00&chs=400x150&chl=Failed Courses|Completed Courses&chd=t:<%= @user.failed_courses.count %>,<%= @user.completed_courses.count %>"></div>
+<% end %>
+<div>Completed courses: <%= @user.completed_courses.count %></div>
+<div>Failed courses: <%= @user.failed_courses.count %></div>
 <h2>User's friends</h2>
 <% if !@user.friends.blank? %>
   <ul>

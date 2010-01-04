@@ -25,6 +25,11 @@ class User < ActiveRecord::Base
   
   has_many :likes
 
+  has_many :courses_completed
+  has_many :completed_courses, :source => :course, :through => :courses_completed
+  has_many :courses_failed
+  has_many :failed_courses, :source => :course, :through => :courses_failed
+
   attr_accessor :password, :password_confirmation
 
 
