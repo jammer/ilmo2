@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100103231044) do
+ActiveRecord::Schema.define(:version => 20100104010106) do
 
   create_table "course_categories", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20100103231044) do
     t.datetime "updated_at"
     t.integer  "min_exercise_groups"
     t.integer  "max_exercise_groups"
+    t.boolean  "screen",              :default => false
   end
 
   create_table "courses", :force => true do |t|
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20100103231044) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "queue",             :default => false
+    t.boolean  "accepted",          :default => true
   end
 
   create_table "rights", :force => true do |t|

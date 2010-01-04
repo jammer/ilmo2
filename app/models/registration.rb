@@ -5,8 +5,8 @@ class Registration < ActiveRecord::Base
 
   after_create :add_newsfeed_event
 
-  validate :must_be_the_only_registration_for_this_instance
-  validate :check_that_registrations_are_not_exceeded
+  validate_on_create :must_be_the_only_registration_for_this_instance
+  validate_on_create :check_that_registrations_are_not_exceeded
 
   protected
 

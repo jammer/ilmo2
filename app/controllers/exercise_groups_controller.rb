@@ -14,7 +14,7 @@ class ExerciseGroupsController < ApplicationController
     
     registration = current_user.registrations.build :exercise_group => exercise_group
 
-    if exercise_group.full?
+    if exercise_group.full? or exercise_group.course_instance.screen
       registration.queue = true
     else
       registration.queue = false

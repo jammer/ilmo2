@@ -9,20 +9,38 @@ course = course_instance.course
 
 Status: <%= @exercise_group.status %>
 
+<% if @exercise_group.course_instance.screen %>
+<h4>Accepted users:</h4>
+<ul>
+<% @exercise_group.accepted_users.each do |registered_user| %>
+  <li><%= registered_user.name %></li>
+<% end %>
+</ul>
+<h4>Rejected users:</h4>
+<ul>
+<% @exercise_group.rejected_users.each do |registered_user| %>
+  <li><%= registered_user.name %></li>
+<% end %>
+</ul>
+<% else %>
 <h4>Registered users:</h4>
 <ul>
 <% @exercise_group.registered_users.each do |registered_user| %>
   <li><%= registered_user.name %></li>
 <% end %>
 </ul>
+<% end %>
 
-<% if @exercise_group.full? -%>
+<% if @exercise_group.full? or @exercise_group.course_instance.screen -%>
 <h4>Queued users:</h4>
 <ul>
 <% @exercise_group.queued_users.each do |registered_user| %>
   <li><%= registered_user.name %></li>
 <% end %>
 </ul>
+<% if @exercise_group.course_instance.screen %> 
+<p style='color: red;'>All users have to go through queue and the admin will pre-screen all students!</p>
+<% end %>
 <p><%= link_to 'Queue to this exercise group', course_course_instance_exercise_group_registration_url(course, course_instance, @exercise_group) %></p>
 <% else %>
 <p><%= link_to 'Register to this exercise group', course_course_instance_exercise_group_registration_url(course, course_instance, @exercise_group) %></p>
