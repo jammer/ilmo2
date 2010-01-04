@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091211050901) do
+ActiveRecord::Schema.define(:version => 20100103231044) do
 
   create_table "course_categories", :force => true do |t|
     t.string   "name"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20091211050901) do
     t.integer  "exercise_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "queue",             :default => false
   end
 
   create_table "rights", :force => true do |t|

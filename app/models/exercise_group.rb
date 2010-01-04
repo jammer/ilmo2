@@ -4,6 +4,8 @@ class ExerciseGroup < ActiveRecord::Base
 
   has_many :registrations
   has_many :users, :through => :registrations
+  has_many :registered_users, :source => :user, :through => :registrations, :conditions => 'queue = 0'
+  has_many :queued_users, :source => :user, :through => :registrations, :conditions => 'queue = 1'
 
   def full?
     students >= max_students

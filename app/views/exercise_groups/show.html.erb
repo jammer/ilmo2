@@ -11,11 +11,21 @@ Status: <%= @exercise_group.status %>
 
 <h4>Registered users:</h4>
 <ul>
-<% @exercise_group.users.each do |registered_user| %>
+<% @exercise_group.registered_users.each do |registered_user| %>
   <li><%= registered_user.name %></li>
 <% end %>
 </ul>
 
+<% if @exercise_group.full? -%>
+<h4>Queued users:</h4>
+<ul>
+<% @exercise_group.queued_users.each do |registered_user| %>
+  <li><%= registered_user.name %></li>
+<% end %>
+</ul>
+<p><%= link_to 'Queue to this exercise group', course_course_instance_exercise_group_registration_url(course, course_instance, @exercise_group) %></p>
+<% else %>
 <p><%= link_to 'Register to this exercise group', course_course_instance_exercise_group_registration_url(course, course_instance, @exercise_group) %></p>
+<% end %>
 
 <%= link_to 'Back', course_course_instance_path(@exercise_group.course_instance.course, @exercise_group.course_instance) %>
